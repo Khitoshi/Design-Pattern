@@ -1,14 +1,18 @@
-#include"Creator.h"
-#include "ConcreteCreator.h"
 #include<iostream>
+#include"Creator.h"
+#include"ConcreteCreator.h"
 
 using namespace std;
 
 int main()
 {
-    ConcreteCreator1 creator ;
+    ConcreteCreator creator;
     
-    creator.FactoryMethod().Use();
+    //output: Result of the ConcreteProduct1
+    creator.FactoryMethod<ConcreteProduct1>().Use();
+
+    //output: Result of the ConcreteProduct2
+    creator.FactoryMethod<ConcreteProduct2>().Use();
 
     return 0;
 }

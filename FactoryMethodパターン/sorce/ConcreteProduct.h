@@ -6,15 +6,13 @@ using namespace std;
 class ConcreteProduct1:public Creator<ConcreteProduct1>{
 public:
     string Method(){
-        return "{Result of the ConcreteProduct1}";
+        return "Result of the ConcreteProduct1";
     }
 };
 
-/*
-class ConcreteProduct2 : public Product {
+class ConcreteProduct2 :public Creator<ConcreteProduct2> {
 public:
-    string Use() const override {
-        return "{Result of the ConcreteProduct2}";
+    string Method() {
+        return "Result of the ConcreteProduct2";
     }
 };
-*/
