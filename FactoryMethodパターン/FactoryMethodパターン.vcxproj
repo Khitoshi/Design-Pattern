@@ -145,6 +145,7 @@
     <ClInclude Include="sorce\ConcreteCreator.h" />
     <ClInclude Include="sorce\ConcreteProduct.h" />
     <ClInclude Include="sorce\Creator.h" />
+    <ClInclude Include="sorce\Interface.h" />
     <ClInclude Include="sorce\Product.h" />
     <ClInclude Include="sorce\Test.h" />
   </ItemGroup>
