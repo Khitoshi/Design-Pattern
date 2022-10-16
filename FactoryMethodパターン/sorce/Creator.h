@@ -6,11 +6,14 @@
 template <class T>
 class Creator
 {
+private:
+    T obj;
 public:
     Creator() {}
     ~Creator() {}
 
-    string Method() { 
-        return static_cast<T&>(this)->Method();
+    template <class C>
+    Product<C> FactoryMethod() {
+        return obj.FactoryMethod<C>();
     }
-};
+}; 
