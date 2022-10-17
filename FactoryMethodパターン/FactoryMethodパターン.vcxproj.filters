@@ -27,8 +27,5 @@
     <ClInclude Include="sorce\ConcreteProduct.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="sorce\Interface.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
