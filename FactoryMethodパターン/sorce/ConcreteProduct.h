@@ -1,17 +1,22 @@
 #pragma once
 #include <iostream>
 #include "Product.h"
+#include "Interface.h"
 using namespace std;
 
-class ConcreteProduct1:public Creator<ConcreteProduct1>{
+class ConcreteProduct1 :Interface<ConcreteProduct1> {
 public:
-    string Method(){
+
+    string Method() {
         return "Result of the ConcreteProduct1";
     }
 };
 
-class ConcreteProduct2 :public Creator<ConcreteProduct2> {
+class ConcreteProduct2 : Interface<ConcreteProduct2> {
 public:
+    ConcreteProduct2() {}
+    ~ConcreteProduct2() {}
+
     string Method() {
         return "Result of the ConcreteProduct2";
     }
