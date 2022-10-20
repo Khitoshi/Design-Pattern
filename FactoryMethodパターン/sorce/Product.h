@@ -1,27 +1,12 @@
 #pragma once
-
-#include <string>
-#include <iostream>
+#include<concepts>
+#include <string_view>
 
 using namespace std;
 
+//«¿‚ğİ’è‚·‚é
 template <class T>
-class Interface;
-
-template<class T,bool isExtended = std::is_base_of<Interface<T>,T>::velue>
-class Product
-{
-    static_assert(isExtended, "T is not extended interface class");
-};
-
-
-template <class T>
-class Product<T,true>
-{
-private:
-    T obj;
-public:
-    Product() {}
-    ~Product() {}
-    void Use() { cout << obj.Method() << endl; };
+concept is_product = default_initializable<T>&& 
+    requires(T x) {
+    {x.Method()}->convertible_to<string_view>;
 };

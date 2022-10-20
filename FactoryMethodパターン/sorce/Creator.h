@@ -1,22 +1,16 @@
 #pragma once
+#include"Product.h"
 
-#include <string>
-#include "Product.h"
-
-
-
-template <class T>
-class Creator
+struct Creator
 {
-private:
-    T obj;
-public:
-    Creator() {}
-    ~Creator() {}
+    template <class T>
+    static void use(const T& x) {
+        std::cout << x.Method() << std::endl;
+    };
 
-    template <class C>
-    Product<C> FactoryMethod() {
-        // return obj.FactoryMethod<C>();
-        return obj.FactoryMethod<C>();
-    }
-}; 
+    //ÉNÉâÉXê∂ê¨
+    template <is_product T>
+    static T factory(void) {
+        return T();
+    };
+};

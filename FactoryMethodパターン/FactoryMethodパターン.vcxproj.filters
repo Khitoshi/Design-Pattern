@@ -12,22 +12,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sorce\Test.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="sorce\Creator.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="sorce\Product.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="sorce\ConcreteCreator.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="sorce\ConcreteProduct.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="sorce\Interface.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
