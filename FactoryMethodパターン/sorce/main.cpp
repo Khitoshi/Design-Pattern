@@ -1,21 +1,20 @@
 #include<iostream>
 #include"Creator.h"
-#include"ConcreteCreator.h"
-#include "ConcreteProduct.h"
-
-using namespace std;
+#include"ConcreteProduct.h"
 
 int main()
 {
-    //Creator<ConcreteCreator>  creator;
-    Creator<ConcreteCreator> creator;
-    creator.FactoryMethod<ConcreteProduct2>()
+    //output: ConcreteProduct1
+    auto product1 = Creator::factory<ConcreteProduct1>();
+    Creator::use(product1);
 
-    //creator.FactoryMethod<ConcreteProduct1>().Use();
-    //creator.FactoryMethod<ConcreteProduct2>().Use();
+    //output: ConcreteProduct2  
+    auto product2 = Creator::factory<ConcreteProduct2>();
+    Creator::use(product2);
 
-
-    
+    //必要な関数がないのでエラーになる
+    //auto product3 = Creator::factory<ConcreteProduct3>();
+    //Creator::use(product3);
 
     return 0;
 }
