@@ -1,43 +1,64 @@
 #pragma once
-#include "Prototype.h"
 
-class ConcretePrototype:public Prototype
+#include "Prototype.h"
+#include<string.h>
+#include <unordered_map>
+
+using namespace std;
+
+class ConcretePrototype1:public Prototype
 {
+private:
+    float field;
 public:
-	ConcretePrototype(){}
-	~ConcretePrototype()override{}
-	
+    ConcretePrototype1(string name, float field) :
+        Prototype(name), field(field)
+    {}
+
+    Prototype* Clone()const override
+    {
+        return new ConcretePrototype1(*this);
+    }
 
 };
 
-#include <iostream>
-using namespace std;
-class MassageBox :public Prototype<MassageBox>
+
+class ConcretePrototype2 :public Prototype
 {
 private:
-	string decoStr;
+    float field;
 public:
-	MassageBox(const string str) :decoStr(str) {};
-	~MassageBox()override{};
+    ConcretePrototype2(string name, float field) :
+        Prototype(name), field(field)
+    {}
 
-	void Use(string str) {
-		int length = str.length() + 4;
-		for (int i = 0; i < length; i++) {
-			cout << decoStr;
-		}
-		cout << endl;
-		cout << decoStr << " " << str << " " << decoStr << endl;
+    Prototype* Clone()const override
+    {
+        return new ConcretePrototype2(*this);
+    }
 
-		for (int i = 0; i < length; i++)
-		{
-			cout << decoStr;
-		}
-		cout << endl;
-	}
+};
 
-	Prototype CreateClone()
-	{
 
-	}
+class PrototypeFactory {
+private:
+    std::unordered_map<Type, Prototype*, std::hash<int>> prototypes;
+    //std::unordered_map<Type, Prototype*> prototypes;
+
+public:
+    PrototypeFactory() {
+        prototypes[Type::PROTOTYPE_1] = new ConcretePrototype1("PROTOTYPE_1 ", 50.f);
+        prototypes[Type::PROTOTYPE_2] = new ConcretePrototype2("PROTOTYPE_2 ", 60.f);
+    }
+
+    ~PrototypeFactory() {
+        delete prototypes[Type::PROTOTYPE_1];
+        delete prototypes[Type::PROTOTYPE_2];
+    }
+
+
+    Prototype* CreatePrototype(Type type) {
+        return prototypes[type]->Clone();
+    }
 
 };
