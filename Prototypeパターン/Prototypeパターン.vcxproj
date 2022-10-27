@@ -144,10 +144,10 @@
     <ClCompile Include="sorce\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sorce\Client.h" />
-    <ClInclude Include="sorce\Cloneable.h" />
+    <ClInclude Include="sorce\Manager.h" />
+    <ClInclude Include="sorce\MessageBox.h" />
     <ClInclude Include="sorce\Prototype.h" />
-    <ClInclude Include="sorce\ConcretePrototype.h" />
+    <ClInclude Include="sorce\UnderLinePen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

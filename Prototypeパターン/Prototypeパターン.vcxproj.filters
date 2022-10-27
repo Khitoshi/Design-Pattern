@@ -12,16 +12,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sorce\Client.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="sorce\Prototype.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="sorce\ConcretePrototype.h">
+    <ClInclude Include="sorce\UnderLinePen.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="sorce\Cloneable.h">
+    <ClInclude Include="sorce\MessageBox.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="sorce\Manager.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,40 +1,51 @@
 #include <iostream>
-
-#include "ConcretePrototype.h"
+#include "Manager.h"
+#include "MessageBox.h"
+#include "UnderLinePen.h"
 
 using namespace std;
 
-void Client(PrototypeFactory& prototype_factory) {
-    std::cout << "Let's create a Prototype 1\n";
-
-    Prototype* prototype = prototype_factory.CreatePrototype(Type::PROTOTYPE_1);
-    prototype->Method(90);
-    delete prototype;
-
-    std::cout << "\n";
-
-    std::cout << "Let's create a Prototype 2 \n";
-
-    prototype = prototype_factory.CreatePrototype(Type::PROTOTYPE_2);
-    prototype->Method(10);
-
-    delete prototype;
-}
-
-
 int main()
 {
-    PrototypeFactory* factory = new PrototypeFactory();
-    Client(*factory);
-    delete factory;
+    Manager* manager = new Manager();
+    {
+        manager->Register<MessageBox>("Box", '@');
+        manager->Register<MessageBox>("line", '*');
+        manager->Register<UnderLinePen>("under", '_');
+    }
+
+    {
+        Prototype* p1 = manager->Create("Box");
+        p1->Use("this is p1");
+        delete p1;
+
+        Prototype* p2 = manager->Create("line");
+        p2->Use("this is p2");
+        delete p2;
+
+        Prototype* p3 = manager->Create("under");
+        p3->Use("this is p3");
+        delete p3;
+    }
+
+    delete manager;
+
     return 0;
 }
 
 /*
-    PrototypeFactory 生成
-    ConcretePrototype1&ConcretePrototype2をPrototypeFactoryのコンストラクトで生成
-    Cloneのprototypeに先ほど生成下ConcretePrototypeのクローンを渡す
-    prototypeのMethodでfieldの数値変更&output
-    prototype 解放
-    PrototypeFactory 解放
+    Manager 生成
+
+    ManagerにEmojiを登録
+
+    Prototype に 先ほど登録したEmojiのクローン　を入れて　生成する
+
+    Prototype のMethod　で 登録したクローンを使える
+
+    Prototype 解放
+
+    Manager 解放
+
+    Managerに登録した要素をCloneを使って生成などをして使いまわす．
+
 */
