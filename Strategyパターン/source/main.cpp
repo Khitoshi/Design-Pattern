@@ -2,13 +2,10 @@
 #include <string>
 using namespace std;
 
-
-
-
-
 template <class T>
 concept is_Comparator = requires(T & obj)
 {
+    //{obj.Comprator()}->convertible_to<string>;
     obj.Comprator();
 };
 
@@ -18,22 +15,21 @@ class InterFace
 {
 public:
     InterFace() {};
-    ~InterFace(){};
+    virtual ~InterFace() = default;
 
-    void Use() { cout << obj.Comprator() << endl; }
-
-private:
-    T obj;
+    unique_ptr<T> Use() { return make_unique<T>(); }
 };
 
 
 class AgeComparator
 {
 public:
-    string Comprator() {
+    AgeComparator(){}
+    string Comprator()const {
         return "AgeComparator";
     }
 };
+
 
 class HeightComparator
 {
@@ -54,10 +50,11 @@ public:
 
 int main()
 {
-    InterFace<AgeComparator>* interFace = new InterFace<AgeComparator>();
-    interFace->Use();
+    //InterFace<AgeComparator>* interFace = new InterFace<AgeComparator>();
+    auto age = make_unique<InterFace<AgeComparator>>();
+    cout << age->Use()->Comprator()<<endl;
+    
 
-    delete interFace;
 
     return 0;
 }
