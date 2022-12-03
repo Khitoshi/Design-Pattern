@@ -1,43 +1,22 @@
 #pragma once
 #include <string>
-#include "AbstractFactory.h"
+#include "Product.h"
 
-using namespace std;
-
-class ConcreteProduct1
+// 具体的なProductを表すクラス
+class ConcreteProductA : public Product
 {
 public:
-	ConcreteProduct1() {};
-	~ConcreteProduct1() {};
-
-	const char* Excute()const
-	{
-		return "ConcreteProduct1:Excute";
-	}
+    void do_something() const override
+    {
+        std::cout << "ConcreteProductA: doing something" << std::endl;
+    }
 };
 
-
-class ConcreteProduct2
+class ConcreteProductB : public Product
 {
 public:
-	ConcreteProduct2() {};
-	~ConcreteProduct2() {};
-
-	const char* Run()const
-	{
-		return "ConcreteProduct2:Run";
-	}
-};
-
-
-class ConcreteProduct3
-{
-public:
-	ConcreteProduct3() {};
-	~ConcreteProduct3() {};
-
-	const char* Action()const
-	{
-		return "ConcreteProduct3:Action";
-	}
+    void do_something() const override
+    {
+        std::cout << "ConcreteProductB: doing something" << std::endl;
+    }
 };

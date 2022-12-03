@@ -1,16 +1,16 @@
-#include <iostream>
-#include "Product.h"
-#include <typeinfo>
+//#include "Product.h"
 #include "AbstractFactory.h"
-#include "ConcreteProduct.h"
 using namespace std;
 
 int main()
 {
-    ConcreteFactoryA CFactoryA;
-    AbstractProduct1<ConcreteProduct1>* CProduct1 = CFactoryA.CreateProduct1();
-    cout << CProduct1->Use() << endl;
+    auto factory = std::make_unique<AbstractFactory<ConcreteFactory>>();
 
-    delete CProduct1;
+    //TODO:‚±‚±‚Íƒƒ‚ƒŠ‚Ì‹ÇŠ«‚ªˆ«‚¢‹C‚ª‚·‚é
+    auto product_a = factory->Use()->create_product_a();
+    product_a->do_something();
+
+    auto product_b = factory->Use()->create_product_b();
+    product_b->do_something();
     return 0;
 }

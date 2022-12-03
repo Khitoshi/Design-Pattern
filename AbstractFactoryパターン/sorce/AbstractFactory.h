@@ -1,35 +1,39 @@
 #pragma once
 
-#include "Product.h"
+#include "ConcreteProduct.h"
 
-/*
-template <class T>
-concept is_AbstractFactory =
-std::default_initializable<T> && 
-requires(T & obj)
-{
-    obj.CreateProduct1();
-    obj.CreateProduct2();
-    obj.CreateProduct3();
+// Factoryを表すインタフェース
+template<class T>
+concept FactoryConcept = requires(T obj) {
+    {obj.create_product_a()}->std::convertible_to<std::unique_ptr<Product>>;
+    {obj.create_product_b()}->std::convertible_to<std::unique_ptr<Product>>;
 };
-*/
 
 
-class ConcreteFactoryA
+template<FactoryConcept T>
+class AbstractFactory
 {
 public:
-    ConcreteFactoryA() {}
-    ~ConcreteFactoryA() {}
-    
-    AbstractProduct1<ConcreteProduct1>* CreateProduct1() {
-        return new AbstractProduct1<ConcreteProduct1>;
-    };
+    AbstractFactory() {}
+    virtual ~AbstractFactory() {};
+    std::unique_ptr<T> Use() { return std::make_unique<T>(); }
+};
 
-    AbstractProduct2<ConcreteProduct2>* CreateProduct2() {
-        return new AbstractProduct2<ConcreteProduct2>;
-    };
-    
-    AbstractProduct3<ConcreteProduct3>* CreateProduct3() {
-        return new AbstractProduct3<ConcreteProduct3>;
-    };
+
+//TODO:AbstractFactoryから派生させたい
+// 具体的なFactoryを表すクラス
+class ConcreteFactory
+{
+public:
+    ConcreteFactory() {};
+    ~ConcreteFactory() {};
+    std::unique_ptr<Product> create_product_a() const
+    {
+        return std::make_unique<ConcreteProductA>();
+    }
+
+    std::unique_ptr<Product> create_product_b() const
+    {
+        return std::make_unique<ConcreteProductB>();
+    }
 };
