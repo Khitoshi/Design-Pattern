@@ -1,5 +1,4 @@
 #pragma once
-
 #include "ConcreteProduct.h"
 
 // Factoryを表すインタフェース

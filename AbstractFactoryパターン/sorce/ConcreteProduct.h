@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "Product.h"
 
 // 具体的なProductを表すクラス
